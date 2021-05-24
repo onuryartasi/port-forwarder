@@ -22,7 +22,7 @@ func main() {
 
 	_, err := exec.Command("which", "kubectl").CombinedOutput()
 	if err != nil {
-		fmt.Println("Please install kubectl tool")
+		log.Fatalf("Please install kubectl tool")
 	}
 	proxyConfig := ProxyConfig{}
 	namespace:="stage"
