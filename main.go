@@ -26,7 +26,7 @@ func main() {
 	}
 	proxyConfig := ProxyConfig{}
 	namespace:="stage"
-	config, err := ioutil.ReadFile("proxy-config.yaml")
+	config, err := ioutil.ReadFile("config.yaml")
 	if err != nil {
 		log.Printf("yamlFile.Get err  #%v ", err)
 	}
