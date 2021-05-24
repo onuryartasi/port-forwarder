@@ -1,0 +1,26 @@
+namespace: stage
+service:
+  image-api:
+    - port: 8080  # Local machine proxy port.
+      targetPort: 8080 # Kubernetes service port.
+
+  legacy-api:
+    - port: 8081
+      targetPort: 8080
+
+  postgres-postgresql:
+    - port: 5432
+      targetPort: 5432
+
+  mongodb:
+    - port: 27017
+      targetPort: 27017
+
+  stan:
+    - port: 4222
+      targetPort: 4222
+      namespace: stage # set namespace spesific port definition.
+
+  redis-master:
+    - port: 6379
+      targetPort: 6379
