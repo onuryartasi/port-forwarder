@@ -42,9 +42,10 @@ func main() {
 
 	for serviceName, service := range proxyConfig.Service {
 		for _, elm := range service {
-			cmd := exec.Command("/bin/bash", "-c", fmt.Sprintf(" kubectl port-forward -n %s svc/%s %s:%s",
+			fmt.Printf(namespace)
+			cmd := exec.Command("/bin/bash", "-c", fmt.Sprintf(" kubectl port-forward --namespace %s svc/%s %s:%s",
 				namespace,serviceName, service[0].Port, service[0].TargetPort))
-			err = cmd.Start()
+			err := cmd.Run()
 			if err != nil {
 				log.Printf("Cannot proxied %s", serviceName)
 			} else {

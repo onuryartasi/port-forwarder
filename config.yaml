@@ -1,4 +1,4 @@
-namespace: stage
+namespace: xyz
 service:
   image-api:
     - port: 8080  # Local machine proxy port.
