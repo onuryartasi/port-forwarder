@@ -25,12 +25,16 @@ func main() {
 		log.Fatalf("Please install kubectl tool")
 	}
 	proxyConfig := ProxyConfig{}
-	namespace:="stage"
+	namespace:="default"
 	config, err := ioutil.ReadFile("config.yaml")
 	if err != nil {
 		log.Printf("yamlFile.Get err  #%v ", err)
 	}
+
 	err = yaml.Unmarshal(config, &proxyConfig)
+	if len(proxyConfig.Namespace) != 0 {
+		namespace = proxyConfig.Namespace
+	}
 	pids := []*os.Process{}
 	if err != nil {
 		log.Fatalf("error: %v", err)
