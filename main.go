@@ -45,7 +45,8 @@ func main() {
 			fmt.Printf(namespace)
 			cmd := exec.Command("/bin/bash", "-c", fmt.Sprintf(" kubectl port-forward --namespace %s svc/%s %s:%s",
 				namespace,serviceName, service[0].Port, service[0].TargetPort))
-			err := cmd.Run()
+			err := cmd.Start()
+
 			if err != nil {
 				log.Printf("Cannot proxied %s", serviceName)
 			} else {
